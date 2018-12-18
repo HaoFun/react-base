@@ -1,0 +1,6 @@
+export const LOGIN = 'LOGIN'
+export const LOGOUT = 'LOGOUT'
+export const FETCH_USER = 'FETCH_USER'
+export const FETCH_USER_TOKEN = 'FETCH_USER_TOKEN'
+export const FETCH_USER_SUCCEEDED = 'FETCH_USER_SUCCEEDED'
+export const FETCH_USER_FAILURE = 'FETCH_USER_FAILURE'
