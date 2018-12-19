@@ -1,5 +1,5 @@
 import React from 'react'
-import ScrollBar from '@components/ScrollBar'
+import ScrollBar from '@/components/ScrollBar'
 import { Nav } from 'reactstrap'
 import NavigationHeader from '@/components/NavigationHeader'
 import MetisMenu from 'haofun-react-metismenu/lib/index'

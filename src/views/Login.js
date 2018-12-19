@@ -3,7 +3,7 @@ import { injectIntl } from 'react-intl'
 import { Button, Input } from 'reactstrap'
 import { connect } from 'react-redux'
 import { loginSagaAction } from '@/store/auth/action'
-import config from '@utils/config'
+import config from '@/utils/config'
 
 class Login extends Component {
 	constructor(props) {
@@ -13,8 +13,9 @@ class Login extends Component {
 
 	handleSubmit(e) {
 		e.preventDefault()
-		this.props.login(this.account.value, this.password.value, () => {
-			this.props.history.push(config.rootIndex)
+		const { login, history } = this.props
+		login(this.account.value, this.password.value, () => {
+			history.push(config.rootIndex)
 		})
 	}
 
@@ -23,7 +24,8 @@ class Login extends Component {
 		return (
 			<div className="row justify-content-center">
 				<div className="col-md-6">
-					<div className="ibox-content">
+					<div className="ibox-content login-radius">
+						<h2 className="font-bold">Welcome to IN+</h2>
 						<div className="form-group">
 							<Input
 								innerRef={input => {this.account = input}}

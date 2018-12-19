@@ -1,4 +1,5 @@
 export default {
+	api_domain: 'http://a57338e9-a1d6-4107-b41e-209dd3514024.mock.pstmn.io',
 	profileElement: 'React-Base',
 	logoElement: 'IN+',
 	rootIndex: '/',

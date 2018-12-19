@@ -1,107 +1,29 @@
 import React, { PureComponent } from 'react'
-import { ConnectedRouter } from 'connected-react-router/immutable'
-import { Switch, Redirect, Route } from 'react-router-dom'
-import { guestRoute, authRoute } from './router'
 import { connect } from 'react-redux'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import Navigation from '@/components/Navigation'
-import { setWindowSizeAction } from '@/store/styled/action'
+import MainLayout from '@/components/Layouts/MainLayout'
+import BaseLayout from '@/components/Layouts/BaseLayout'
+import { Router } from 'react-router-dom'
+import history from '@/plugins/history'
 
 class RootRouter extends PureComponent {
-	routerList(isAuth, permission, height) {
-		if (isAuth) {
-			let permissions = []
-			if (permission) {
-				permissions = permission.map(item => item.component)
-			}
-			return this.iSAuth(permissions, height)
-		}
-		return this.isGuest()
-	}
-
-	isGuest() {
-		let routers = guestRoute.map(route => (
-			<Route
-				key={route.name}
-				exact={route.exact}
-				path={route.path}
-				component={route.component}
-			/>
-		))
-		return (
-			<div className="loginColumns animated fadeInDown">
-				<Switch>
-					{routers}
-					<Redirect exact to='/login' />
-				</Switch>
-			</div>
-		)
-	}
-
-	iSAuth(permissions, height) {
-		let routers = authRoute.reduce((routes, current) => {
-			return permissions.includes(current.name) ? [
-				...routes, (
-					<Route
-						key={current.name}
-						exact={current.exact}
-						path={current.path}
-						component={current.component}
-					/>
-				)]: routes}, [])
-		return (
-			<div id="wrapper">
-				<Navigation
-					height={height}
-				/>
-				<div id="page-wrapper" className='gray-bg'>
-					<Header />
-					<Switch>
-						{routers}
-					</Switch>
-					<Footer />
-				</div>
-			</div>
-		)
-	}
-
-	componentDidMount() {
-		window.addEventListener("resize", this.props.screenResize)
-	}
-
-	componentWillUnmount() {
-		window.removeEventListener("resize", this.props.screenResize)
-	}
-
 	render() {
-		const {isAuth, user, history, height} = this.props
+		const {isAuth} = this.props
+		const Layout = isAuth ? MainLayout: BaseLayout
 		return (
-			<ConnectedRouter history={history}>
-				{this.routerList(isAuth, user, height)}
-			</ConnectedRouter>
+			<Router history={history}>
+				<Layout />
+			</Router>
 		)
 	}
 }
 
 const mapStateToProps = state => {
-	let user = state.getIn(['auth', 'user'])
-	user = user && user.permissions
 	return {
-		user: user,
-		isAuth: state.getIn(['auth', 'status']),
-		height: state.getIn(['styled', 'height']),
+		isAuth: state.getIn(['auth', 'status'])
 	}
 }
 
-const mapDispatchToProps = dispatch => ({
-	screenResize() {
-		const {innerWidth, innerHeight} = window
-		dispatch(setWindowSizeAction(innerWidth, innerHeight))
-	}
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(RootRouter)
+export default connect(mapStateToProps)(RootRouter)
 
 export const menuContent = (intl, user) => {
 	let menu = []

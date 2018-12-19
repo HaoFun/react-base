@@ -1,7 +1,7 @@
 import { takeLatest, put, call, all } from 'redux-saga/effects'
 import axios from 'axios'
 import * as constants from './constant'
-import { login_api, auth_me_api } from '@utils/api'
+import { login_api, auth_me_api } from '@/utils/api'
 import { fetchUserSagaAction, fetchUserSucceededAction, fetchUserFailureAction, fetchUserTokenAction } from './action'
 import { notify } from '@/plugins/notify'
 import { I18n } from '@/plugins/IntlProvider'

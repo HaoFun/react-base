@@ -1,3 +1,7 @@
+* {
+    font-family: "微軟正黑體";
+}
+
 .metismenu {
     font-size: 12pt;
     font-weight: 600;
@@ -136,4 +140,9 @@ I.metismenu-state-icon.rotate-minus-90 {
 
 .margin-bottom-0 {
     margin-bottom: 0;
+}
+
+.login-radius {
+    border: 2px solid #2f4050;
+    border-radius: 10px;
 }

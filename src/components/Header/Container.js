@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { changeLocaleAction } from '@/store/locale/action'
 import { toggleMiniNavbarAction } from '@/store/styled/action'
 import { logoutAction } from '@/store/auth/action'
-import config from '@utils/config'
+import config from '@/utils/config'
 import { injectIntl } from 'react-intl'
 import UI from './UI'
 

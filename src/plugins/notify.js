@@ -1,4 +1,18 @@
-import { toast } from 'react-toastify'
+import { toast, ToastContainer } from 'react-toastify'
+import React from "react";
+
+export default () => {
+	return (
+		<ToastContainer
+			position="bottom-right"
+			autoClose={5000}
+			newestOnTop={true}
+			closeOnClick
+			draggable
+			pauseOnHover>
+		</ToastContainer>
+	)
+}
 
 export function notify(message, notifyType=null) {
 	switch (notifyType) {

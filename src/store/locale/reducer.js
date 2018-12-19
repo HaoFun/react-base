@@ -1,10 +1,10 @@
 import * as constants from './constant'
 import { fromJS } from 'immutable'
-import config from '@utils/config'
+import config from '@/utils/config'
 
 const localStorageLocale = localStorage.getItem('react_locale')
 const defaultState = fromJS({
-  locale: localStorageLocale ? localStorageLocale : config.locale,
+  locale: localStorageLocale ? localStorageLocale: config.locale,
 })
 
 export default (state = defaultState, action) => {

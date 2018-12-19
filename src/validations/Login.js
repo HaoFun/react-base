@@ -1,5 +1,5 @@
-import validator from 'validator';
-import isEmpty from 'lodash/isEmpty';
+import validator from 'validator'
+import isEmpty from 'lodash/isEmpty'
 
 const validateInput = input => {
 	let errors = {};
@@ -24,6 +24,6 @@ const validateInput = input => {
 		errors,
 		isValid: isEmpty(errors)
 	}
-};
+}
 
-export default validateInput;
+export default validateInput

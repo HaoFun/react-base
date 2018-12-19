@@ -1,5 +1,5 @@
 import React from 'react'
-import Dropdown from '@components/Dropdown'
+import Dropdown from '@/components/Dropdown'
 
 const UI = ({ username, logout, dropDownMenuUser}) => {
 	return (
